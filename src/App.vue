@@ -2,7 +2,7 @@
   <div>
     <div>
       <button @click="addLike">Лайк</button>
-      <button  @click="addDislike">Дизлайк</button>
+      <button @click="addDislike">Дизлайк</button>
     </div>
     <div>Кол-во лайков: <strong>{{ likes }}</strong></div>
     <div>Кол-во дизлайков: <strong>{{ dislikes }}</strong></div>
@@ -19,15 +19,19 @@ export default {
   },
   methods: {
     addLike() {
-      this.likes +=1
+      this.likes += 1
     },
     addDislike() {
-      this.dislikes +=1
+      this.dislikes += 1
     }
   }
 }
 </script>
 
 <style>
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 </style>
