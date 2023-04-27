@@ -1,11 +1,17 @@
 <template>
   <div>
-    <div>
-      <button @click="addLike">Лайк</button>
-      <button @click="addDislike">Дизлайк</button>
+    <div class="post">
+      <div><strong>Название: </strong> Пост о JS</div>
+      <div><strong>Описание: </strong> JS - язык программирования</div>
     </div>
-    <div>Кол-во лайков: <strong>{{ likes }}</strong></div>
-    <div>Кол-во дизлайков: <strong>{{ dislikes }}</strong></div>
+    <div class="post">
+      <div><strong>Название: </strong> Пост о JS</div>
+      <div><strong>Описание: </strong> JS - язык программирования</div>
+    </div>
+    <div class="post">
+      <div><strong>Название: </strong> Пост о JS</div>
+      <div><strong>Описание: </strong> JS - язык программирования</div>
+    </div>
   </div>
 </template>
 
@@ -33,5 +39,11 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.post {
+  padding: 15px;
+  border: 2px solid teal;
+  margin-top: 10px;
 }
 </style>
