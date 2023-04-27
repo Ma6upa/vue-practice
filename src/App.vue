@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button v-on:click="addLike">Лайк</button>
-      <button  v-on:click="addDislike">Дизлайк</button>
+      <button @click="addLike">Лайк</button>
+      <button  @click="addDislike">Дизлайк</button>
     </div>
     <div>Кол-во лайков: <strong>{{ likes }}</strong></div>
     <div>Кол-во дизлайков: <strong>{{ dislikes }}</strong></div>
