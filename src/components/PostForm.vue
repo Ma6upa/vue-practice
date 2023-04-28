@@ -13,35 +13,38 @@
 			type="text" 
 			placeholder="Описание"
 		>
-		<button 
-			class="btn"
+		<MyButton 
+			style="align-self: flex-end; margin-top: 15px;"
 			@click="createPost"
 		>
 			Создать
-		</button>
+		</MyButton>
 	</form>
 </template>
 
 <script>
+import MyButton from './UI/MyButton.vue'
+
 export default {
-	data() {
-		return {
-			post: {
-				title: '',
-				body: '',
-			}
-		}
-	},
-	methods: {
-		createPost() {
-			this.post.id = Date.now()
-      this.$emit('create', this.post)
-      this.post = {
-				title: '',
-				body: '',
-			}
-		}
-	}
+    data() {
+        return {
+            post: {
+                title: "",
+                body: "",
+            }
+        };
+    },
+    methods: {
+        createPost() {
+            this.post.id = Date.now();
+            this.$emit("create", this.post);
+            this.post = {
+                title: "",
+                body: "",
+            };
+        }
+    },
+    components: { MyButton }
 }
 </script>
 
@@ -56,14 +59,5 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-}
-
-.btn {
-  align-self: flex-end;
-  margin-top: 15px;
-  padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 1px solid teal;
 }
 </style>
