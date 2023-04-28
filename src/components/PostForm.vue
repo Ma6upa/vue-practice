@@ -23,28 +23,25 @@
 </template>
 
 <script>
-import MyButton from './UI/MyButton.vue'
-
 export default {
     data() {
-        return {
-            post: {
-                title: "",
-                body: "",
-            }
-        };
+			return {
+					post: {
+							title: "",
+							body: "",
+					}
+			};
     },
     methods: {
-        createPost() {
-            this.post.id = Date.now();
-            this.$emit("create", this.post);
-            this.post = {
-                title: "",
-                body: "",
-            };
-        }
+			createPost() {
+					this.post.id = Date.now();
+					this.$emit("create", this.post);
+					this.post = {
+							title: "",
+							body: "",
+					};
+			}
     },
-    components: { MyButton }
 }
 </script>
 
