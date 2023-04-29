@@ -2,7 +2,10 @@
 <template>
   <div class="app">
     <h1>Страница с постами</h1>
-    <MyButton @click="showDialog">
+    <MyButton 
+      @click="showDialog" 
+      style="margin:15px 0"
+    >
       создать пост
     </MyButton>
     <MyDialog v-model:show="dialogVisible">
