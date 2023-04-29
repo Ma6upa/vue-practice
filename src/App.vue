@@ -1,7 +1,9 @@
 @@ -1,98 +0,0 @@
 <template>
   <div class="app">
-    <PostForm @create="createPost" />
+    <MyDialog :show="true">
+      <PostForm @create="createPost" />
+    </MyDialog>
     <PostList :posts="posts" @remove="removePost" />
   </div>
 </template>
@@ -9,11 +11,13 @@
 <script>
 import PostForm from "@/components/PostForm.vue"
 import PostList from "@/components/PostList.vue"
+import MyDialog from "./components/UI/MyDialog.vue";
 export default {
   components: {
     PostList,
     PostForm,
-  },
+    MyDialog
+},
   data() {
     return {
       posts: [
