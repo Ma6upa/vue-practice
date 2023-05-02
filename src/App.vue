@@ -2,6 +2,11 @@
 <template>
   <div class="app">
     <h1>Страница с постами</h1>
+    <MyButton
+      @click="fetchUsers"
+    >
+      запрос
+    </MyButton>
     <MyButton 
       @click="showDialog" 
       style="margin:15px 0"
@@ -20,6 +25,8 @@ import PostForm from "@/components/PostForm.vue"
 import PostList from "@/components/PostList.vue"
 import MyDialog from "./components/UI/MyDialog.vue";
 import MyButton from "./components/UI/MyButton.vue";
+import axios from "axios";
+
 export default {
   components: {
     PostList,
@@ -47,6 +54,14 @@ export default {
     },
     showDialog() {
       this.dialogVisible = true
+    },
+    async fetchUsers() {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
+        console.log(response)
+      } catch (e) {
+        alert('Ошибка')
+      }
     }
   }
 }
