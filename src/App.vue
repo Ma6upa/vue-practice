@@ -5,13 +5,13 @@
     <MyButton
       @click="fetchPosts"
     >
-      запрос
+      Получить посты
     </MyButton>
     <MyButton 
       @click="showDialog" 
       style="margin:15px 0"
     >
-      создать пост
+      Создать пост
     </MyButton>
     <MyDialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
