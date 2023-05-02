@@ -2,16 +2,16 @@
 <template>
   <div class="app">
     <h1>Страница с постами</h1>
-    <MyButton 
-      @click="showDialog" 
-      style="margin:15px 0"
-    >
-      Создать пост
-    </MyButton>
+    <div class="app_btns">
+      <MyButton @click="showDialog">
+        Создать пост
+      </MyButton>
+      <MySelect v-model="selectedSort" :options="sortOptions"/>
+    </div>
     <MyDialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </MyDialog>
-    <PostList :posts="posts" @remove="removePost" v-if="!isPostsLoading"/>
+    <PostList :posts="posts" @remove="removePost" v-if="!isPostsLoading" />
     <h2 v-else>Идет загрузка...</h2>
   </div>
 </template>
@@ -22,19 +22,26 @@ import PostList from "@/components/PostList.vue"
 import MyDialog from "./components/UI/MyDialog.vue";
 import MyButton from "./components/UI/MyButton.vue";
 import axios from "axios";
+import MySelect from "./components/UI/MySelect.vue";
 
 export default {
   components: {
     PostList,
     PostForm,
     MyDialog,
-    MyButton
+    MyButton,
+    MySelect
 },
   data() {
     return {
       posts: [],
       dialogVisible: false,
-      isPostsLoading: false
+      isPostsLoading: false,
+      selectedSort: '',
+      sortOptions: [
+        {value: 'title', name: 'По названию'},
+        {value: 'body', name: 'По описанию'}
+      ]
     }
   },
   methods: {
@@ -75,5 +82,10 @@ export default {
 
 .app {
   padding: 20px
+}
+.app_btns {
+  display: flex;
+  justify-content: space-between;
+  margin:15px 0;
 }
 </style>
