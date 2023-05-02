@@ -2,11 +2,6 @@
 <template>
   <div class="app">
     <h1>Страница с постами</h1>
-    <MyButton
-      @click="fetchPosts"
-    >
-      Получить посты
-    </MyButton>
     <MyButton 
       @click="showDialog" 
       style="margin:15px 0"
@@ -59,6 +54,9 @@ export default {
         alert('Ошибка')
       }
     }
+  },
+  mounted() {
+    this.fetchPosts()
   }
 }
 </script>
