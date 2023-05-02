@@ -3,7 +3,7 @@
   <div class="app">
     <h1>Страница с постами</h1>
     <MyButton
-      @click="fetchUsers"
+      @click="fetchPosts"
     >
       запрос
     </MyButton>
@@ -36,11 +36,7 @@ export default {
 },
   data() {
     return {
-      posts: [
-        { id: 1, title: 'JavaScript', body: 'JS - язык программирования' },
-        { id: 2, title: 'Чай', body: 'Чай - единственный допустимый напиток' },
-        { id: 3, title: 'УдГУ', body: 'УдГУ - вроде как вуз' },
-      ],
+      posts: [],
       dialogVisible: false
     }
   },
@@ -55,10 +51,10 @@ export default {
     showDialog() {
       this.dialogVisible = true
     },
-    async fetchUsers() {
+    async fetchPosts() {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
-        console.log(response)
+        this.posts = response.data
       } catch (e) {
         alert('Ошибка')
       }
