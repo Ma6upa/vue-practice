@@ -1,9 +1,11 @@
 <template>
   <div class="navbar">
-    <div @click="$router.push('/')" style="cursor: pointer;">Learning Vue</div>
+    <div @click="$router.push('/')" style="cursor: pointer; color: white">
+      <h1>Learning Vue</h1>
+    </div>
     <div class="navbar__btns">
-      <MyButton @click="$router.push('/')">Главная страница</MyButton>
-      <MyButton style="margin-left: 20px;" @click="$router.push('/posts')">Посты</MyButton>
+      <MyButton @click="$router.push('/')" class="navbar__btn">Главная страница</MyButton>
+      <MyButton style="margin-left: 20px;" @click="$router.push('/posts')" class="navbar__btn">Посты</MyButton>
     </div>
   </div>
 </template>
@@ -17,7 +19,7 @@ export default {
 <style scoped>
 .navbar {
   height: 50px;
-  background-color: lightgray;
+  background-color: teal;
   box-shadow: 2px 2px 4px gray;
   display: flex;
   align-items: center;
@@ -25,5 +27,10 @@ export default {
 }
 .navbar__btns {
   margin-left: auto;
+}
+
+.navbar__btn {
+  color: white;
+  border: 1px solid white;
 }
 </style>
