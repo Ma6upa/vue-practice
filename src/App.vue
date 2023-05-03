@@ -6,7 +6,7 @@
       v-model="searchQuery"
       placeholder="Поиск....."
     />
-    <div class="app_btns">
+    <div class="app__btns">
       <MyButton @click="showDialog">
         Создать пост
       </MyButton>
@@ -17,6 +17,19 @@
     </MyDialog>
     <PostList :posts="sortedAndSearchedPosts" @remove="removePost" v-if="!isPostsLoading" />
     <h2 v-else>Идет загрузка...</h2>
+    <div class="page__wrapper">
+      <div 
+        v-for="pageNumber in totalPages" 
+        :key="pageNumber"
+        class="page"
+        :class="{
+          'current-page':  page === pageNumber 
+        }"
+        @click="changePage(pageNumber)"
+      >
+        {{ pageNumber }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +50,7 @@ export default {
     MyButton,
     MySelect,
     MyInput
-},
+  },
   data() {
     return {
       posts: [],
@@ -64,6 +77,9 @@ export default {
     },
     showDialog() {
       this.dialogVisible = true
+    },
+    changePage(pageNumber) {
+      this.page = pageNumber
     },
     async fetchPosts() {
       try {
@@ -94,6 +110,11 @@ export default {
     sortedAndSearchedPosts() {
       return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
     },
+  },
+  watch: {
+    page() {
+      this.fetchPosts()
+    }
   }
 }
 </script>
@@ -104,13 +125,25 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-
 .app {
   padding: 20px
 }
-.app_btns {
+.app__btns {
   display: flex;
   justify-content: space-between;
   margin:15px 0;
+}
+.page__wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+.page {
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+.current-page {
+  border: 2px solid teal;
 }
 </style>
