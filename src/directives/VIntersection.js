@@ -1,4 +1,5 @@
 export default {
+  name: 'intersection',
   mounted(element, binding) {
     const options = {
       rootMargin: '0px',
