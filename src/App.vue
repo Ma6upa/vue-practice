@@ -11,7 +11,7 @@
     <MyDialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </MyDialog>
-    <PostList :posts="posts" @remove="removePost" v-if="!isPostsLoading" />
+    <PostList :posts="sortedPosts" @remove="removePost" v-if="!isPostsLoading" />
     <h2 v-else>Идет загрузка...</h2>
   </div>
 </template>
@@ -69,6 +69,12 @@ export default {
   },
   mounted() {
     this.fetchPosts()
+  },
+  computed: {
+    sortedPosts() {
+      return [...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
+      )
+    }
   }
 }
 </script>
