@@ -25,19 +25,11 @@
 import axios from "axios";
 import PostForm from "@/components/PostForm.vue"
 import PostList from "@/components/PostList.vue"
-import MyDialog from "@/components/UI/MyDialog.vue";
-import MyButton from "@/components/UI/MyButton.vue";
-import MySelect from "@/components/UI/MySelect.vue";
-import MyInput from "@/components/UI/MyInput.vue";
 
 export default {
   components: {
     PostList,
     PostForm,
-    MyDialog,
-    MyButton,
-    MySelect,
-    MyInput
   },
   data() {
     return {
@@ -145,7 +137,5 @@ export default {
 .current-page {
   border: 2px solid teal;
 }
-.observer {
-
-}
+.observer {}
 </style>
