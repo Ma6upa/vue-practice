@@ -2,15 +2,12 @@
 <template>
   <div>
     <h1>Страница с постами</h1>
-    <!-- <MyInput 
-      v-model="searchQuery"
-      placeholder="Поиск....."
-    /> -->
+    <MyInput :model-value="searchQuery" @update:model-value="setSearchQuery" placeholder="Поиск....." />
     <div class="app__btns">
       <MyButton @click="showDialog">
         Создать пост
       </MyButton>
-      <!-- <MySelect v-model="selectedSort" :options="sortOptions"/> -->
+      <MySelect :model-value="selectedSort" @update:model-value="setSelectedSort" :options="sortOptions" />
     </div>
     <MyDialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
@@ -38,7 +35,9 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setPage: 'post/setPage'
+      setPage: 'post/setPage',
+      setSearchQuery: 'post/setSearchQuery',
+      setSelectedSort: 'post/setSelectedSort',
     }),
     ...mapActions({
       loadMorePosts: 'post/loadMorePosts',
@@ -83,22 +82,18 @@ export default {
   justify-content: space-between;
   margin: 15px 0;
 }
-
 .page__wrapper {
   display: flex;
   flex-direction: row;
   margin-top: 15px;
 }
-
 .page {
   border: 1px solid black;
   padding: 10px;
   cursor: pointer;
 }
-
 .current-page {
   border: 2px solid teal;
 }
-
 .observer {}
 </style>

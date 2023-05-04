@@ -30,7 +30,7 @@ export const postModule = {
     setLoading(state, bool) {
       state.isPostsLoading = bool
     },
-    selectedSort(state, selectedSort) {
+    setSelectedSort(state, selectedSort) {
       state.selectedSort = selectedSort
     },
     setSearchQuery(state, searchQuery) {
