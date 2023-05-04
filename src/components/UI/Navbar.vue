@@ -6,6 +6,7 @@
     <div class="navbar__btns">
       <MyButton @click="$router.push('/')" class="navbar__btn">Главная страница</MyButton>
       <MyButton style="margin-left: 20px;" @click="$router.push('/posts')" class="navbar__btn">Посты</MyButton>
+      <MyButton style="margin-left: 20px;" @click="$router.push('/posts_with_hooks')" class="navbar__btn">Посты на хуках</MyButton>
     </div>
   </div>
 </template>
